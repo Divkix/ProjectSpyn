@@ -1,6 +1,10 @@
 % connect with EV3 Brick
 brick = ConnectBrick('JIT');
 
+% calibrate the color sensor
+brick.SetColorMode(2, 2);
+color = brick.ColorCode(2);
+
 % calibrate the gyro sensor
 brick.GyroCalibrate(1);
 
@@ -17,7 +21,31 @@ while true
     % start moving forward
     moveForward();
     
-    % is distance == stopDisatnce, then stop the robot and decide where to
+    % jit = legoev3
+    % mycolorsensor = colorsensor(git)
+    % color = readColor(mycolorsensor)
+    if color == 4
+        % move forward
+        moveForward();
+    if color == 2
+        % pickup the passenger
+        brick.MoveMotorAngleRel(‘B’, 20, 35, ‘Coast’);
+    if color == 3
+        % dropoff the passenger
+        brick.MoveMotorAngleRel(‘B’, 20, -35, ‘Coast’);
+        brick.MoveMotor(‘AC’, -50)
+    if color == 5
+        % stop the robot for 1 second and then move forward
+        brick.StopAllMotors(‘Coast’);
+        pause(1);
+        moveForward();
+    if color == 4
+        % stop the robot at the end of maze by exiting loop
+        stop();
+        break;
+
+    
+    % if distance == stopDisatnce, then stop the robot and decide where to
     % turn
     if distance == stopDisatnce
         stop();
