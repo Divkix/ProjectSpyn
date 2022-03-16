@@ -1,6 +1,3 @@
-% connect with EV3 Brick
-% brick = ConnectBrick('JIT');
-
 % calibrate the color sensor
 brick.SetColorMode(2, 2);
 color = brick.ColorCode(2);
@@ -63,77 +60,6 @@ while true
         turnBackward()
     end
 
-end
-
-% function for moving the robot forward
-function moveForward()
-    global brick
-    global robotSpeed
-    
-    % move forward
-    brick.MoveMotor('C', -robotSpeed);
-    brick.MoveMotor('A', -robotSpeed);
-end
-
-% function to move the robot backward
-function turnBackward()
-    global brick
-    global robotSpeed
-    
-    % turn right until angle is 180
-    brick.MoveMotorAngleRel('C', robotSpeed, 1040);
-    brick.MoveMotorAngleRel('A', robotSpeed, 1040);
-end
-
-% function for stop the robot
-function stop()
-    brick.StopAllMotors();
-end
-
-% function to make the robot turn left
-function turnLeft()
-    global brick
-    global stopDistance
-    global canTurnLeft
-    global robotSpeed
-    
-    % turn left
-    brick.MoveMotorAngleRel('C', -robotSpeed, 520);
-    brick.MoveMotorAngleRel('A', robotSpeed, 520);
-    
-    % get distance
-    distance = brick.UltrasonicDist(3);
-    
-    % if distance at left side is greater than stopDisatnce, then set
-    % canTurnLeft to true, else false
-    if distance > stopDistance
-        canTurnLeft = true;
-       else 
-        canTurnLeft = false;
-    end
-end
-
-% function to make the robot turn right
-function turnRight()
-    global brick
-    global stopDistance
-    global canTurnRight
-    global robotSpeed
-    
-    % turn right
-    brick.MoveMotorAngleRel('C', robotSpeed, 520);
-    brick.MoveMotorAngleRel('A', -robotSpeed, 520);
-    
-    % get distance
-    distance = brick.UltrasonicDist(3);
-    
-    % if distance at left side is greater than stopDisatnce, then set
-    % canTurnRight to true, else false
-    if distance > stopDistance
-        canTurnRight = true;
-    else 
-        canTurnRight = false;
-    end
 end
 
 
