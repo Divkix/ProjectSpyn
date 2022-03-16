@@ -1,5 +1,5 @@
 % connect with EV3 Brick
-brick = ConnectBrick('JIT');
+% brick = ConnectBrick('JIT');
 
 % calibrate the color sensor
 brick.SetColorMode(2, 2);
