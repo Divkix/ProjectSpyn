@@ -27,22 +27,23 @@ while true
     if color == 4
         % move forward
         moveForward();
-    if color == 2
+    elseif color == 2
         % pickup the passenger
-        brick.MoveMotorAngleRel(‘B’, 20, 35, ‘Coast’);
-    if color == 3
+        brick.MoveMotorAngleRel('B', 20, 35, 'Coast');
+    elseif color == 3
         % dropoff the passenger
-        brick.MoveMotorAngleRel(‘B’, 20, -35, ‘Coast’);
-        brick.MoveMotor(‘AC’, -50)
-    if color == 5
+        brick.MoveMotorAngleRel('B', 20, -35, 'Coast');
+        brick.MoveMotor('AC', -50)
+    elseif color == 5
         % stop the robot for 1 second and then move forward
-        brick.StopAllMotors(‘Coast’);
+        brick.StopAllMotors('Coast');
         pause(1);
         moveForward();
-    if color == 4
+    elseif color == 4
         % stop the robot at the end of maze by exiting loop
         stop();
         break;
+    end
 
     
     % if distance == stopDisatnce, then stop the robot and decide where to
