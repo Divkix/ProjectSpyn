@@ -5,9 +5,6 @@ brick = ConnectBrick('JIT');
 brick.SetColorMode(2, 2);
 color = brick.ColorCode(2);
 
-% calibrate the gyro sensor
-brick.GyroCalibrate(1);
-
 % define some variables
 stopDistance = 13.5;  % stopDistance is the distance after which the robot should not move
 canTurnRight = false;  % canTurnRight == true means than robot can turn right, otherwise it cannot
@@ -39,10 +36,6 @@ while true
         brick.StopAllMotors('Coast');
         pause(1);
         moveForward();
-    elseif color == 4
-        % stop the robot at the end of maze by exiting loop
-        stop();
-        break;
     end
 
     
@@ -51,9 +44,9 @@ while true
     if distance == stopDisatnce
         stop();
         turnRight();
-        resetRobot();
         turnLeft();
-        resetRobot();
+        turnLeft();
+        turnRight();
     end
 
     % if robot can turn and move to right, then turn right
@@ -73,26 +66,20 @@ end
 
 % function for moving the robot forward
 function moveForward()
-    brick.MoveMotor('C', -robotSpeed);  
+    global brick
+    
+    % move forward
+    brick.MoveMotor('C', -robotSpeed);
     brick.MoveMotor('A', -robotSpeed);
 end
 
 % function to move the robot backward
 function turnBackward()
-    % get angle from gyro sensor
-    angle = brick.GyroAngle(1);
+    global brick
     
     % turn right until angle is 180
-    brick.MoveMotor('C', robotSpeed);
-    brick.MoveMotor('A', -robotSpeed);
-
-    % stop the robot when robot turns to 180 degrees left
-    if angle == 180
-        stop();
-    end
-    
-    % recalibrate the gyro sensor and set angle to 0
-    brick.GyroCalibrate(1);
+    brick.MoveMotorAngleRel('C', robotSpeed, 1040);
+    brick.MoveMotorAngleRel('A', robotSpeed, 1040);
 end
 
 % function for stop the robot
@@ -102,20 +89,14 @@ end
 
 % function to make the robot turn left
 function turnLeft()
-    % set canTurnRight as global variable
+    global brick
+    global stopDistance
     global canTurnLeft
+    global robotSpeed
     
     % turn left
-    brick.MoveMotor('C', -robotSpeed);
-    brick.MoveMotor('A', robotSpeed);
-    
-    % get angle from gyro sensor
-    angle = brick.GyroAngle(1);
-
-    % stop the robot when robot turns to 90 degrees left
-    if angle == 270
-        stop();
-    end
+    brick.MoveMotorAngleRel('C', -robotSpeed, 520);
+    brick.MoveMotorAngleRel('A', robotSpeed, 520);
     
     % get distance
     distance = brick.UltrasonicDist(3);
@@ -131,20 +112,14 @@ end
 
 % function to make the robot turn right
 function turnRight()
-    % set canTurnRight as global variable
+    global brick
+    global stopDistance
     global canTurnRight
+    global robotSpeed
     
     % turn right
-    brick.MoveMotor('C', robotSpeed);
-    brick.MoveMotor('A', -robotSpeed);
-    
-    % get angle from gyro sensor
-    angle = brick.GyroAngle(1);
-
-    % stop the robot when robot turns to 90 degrees right
-    if angle == 90
-        stop();
-    end
+    brick.MoveMotorAngleRel('C', robotSpeed, 520);
+    brick.MoveMotorAngleRel('A', -robotSpeed, 520);
     
     % get distance
     distance = brick.UltrasonicDist(3);
@@ -156,28 +131,28 @@ function turnRight()
     else 
         canTurnRight = false;
     end
-    
 end
 
 
-% function to reset the direction of robot to zero
-function resetRobot()
-    % put in a loop to make sure robot gets stabalized
-    while true
-        % get the angle from sensor
-        angle = brick.GyroAngle(1);
-        if angle == 0 || angle == 360
-            % if angle is 0 or 360, break out of loop
-            break;
-        elseif angle > 0 && angle < 180
-            % turn left if angle is greater than 0 but smaller than 180
-            turnLeft();
-        elseif angle == 180
-            % turn right if gyro angle is 180
-            turnRight();
-        elseif angle > 180 && angle < 360
-            % turn right if angle is greater than 180 but smaller than 360
-            turnRight();
-        end
-    end
-end
+% % function to reset the direction of robot to zero
+% function resetRobot()
+%     global brick
+%     % put in a loop to make sure robot gets stabalized
+%     while true
+%         % get the angle from sensor
+%         angle = brick.GyroAngle(1);
+%         if angle == 0 || angle == 360
+%             % if angle is 0 or 360, break out of loop
+%             break;
+%         elseif angle > 0 && angle < 180
+%             % turn left if angle is greater than 0 but smaller than 180
+%             turnLeft();
+%         elseif angle == 180
+%             % turn right if gyro angle is 180
+%             turnRight();
+%         elseif angle > 180 && angle < 360
+%             % turn right if angle is greater than 180 but smaller than 360
+%             turnRight();
+%         end
+%     end
+% end
