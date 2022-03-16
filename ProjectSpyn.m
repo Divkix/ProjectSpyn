@@ -26,10 +26,10 @@ while true
         moveForward();
     elseif color == 2
         % pickup the passenger
-        brick.MoveMotorAngleRel('B', 20, 35, 'Coast');
+        brick.MoveMotorAngleRel('B', 20, 35);
     elseif color == 3
         % dropoff the passenger
-        brick.MoveMotorAngleRel('B', 20, -35, 'Coast');
+        brick.MoveMotorAngleRel('B', 20, -35);
         brick.MoveMotor('AC', -50)
     elseif color == 5
         % stop the robot for 1 second and then move forward
