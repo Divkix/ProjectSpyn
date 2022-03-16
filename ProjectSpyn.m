@@ -3,9 +3,9 @@ brick.SetColorMode(2, 2);
 color = brick.ColorCode(2);
 
 % define some variables
-stopDistance = 13.5;  % stopDistance is the distance after which the robot should not move
-canTurnRight = false;  % canTurnRight == true means than robot can turn right, otherwise it cannot
-canTurnLeft = false;  % canTurnLeft == true means than robot can turn left, otherwise it cannot
+% stopDistance = 13.5;  % stopDistance is the distance after which the robot should not move
+% canTurnRight = false;  % canTurnRight == true means than robot can turn right, otherwise it cannot
+% canTurnLeft = false;  % canTurnLeft == true means than robot can turn left, otherwise it cannot
 robotSpeed = 50;  % the speed at which robot will move around the maze
 
 while true
@@ -39,7 +39,7 @@ while true
     
     % if distance == stopDisatnce, then stop the robot and decide where to
     % turn
-    if distance == stopDisatnce
+    if distance == 13.5
         stop();
         turnRight();
         turnLeft();
@@ -50,15 +50,15 @@ while true
     % if robot can turn and move to right, then turn right
     % elseif it cannot move right but can turn and move to left, turn left
     % else turn the robotBackward
-    if canTurnRight == true
-        turnRight();
-        moveForward();
-    elseif canTurnLeft == true
-        turnLeft();
-        moveForward();
-    else
-        turnBackward()
-    end
+    % if canTurnRight == true
+    %     turnRight();
+    %     moveForward();
+    % elseif canTurnLeft == true
+    %     turnLeft();
+    %     moveForward();
+    % else
+    %     turnBackward()
+    % end
 
 end
 
