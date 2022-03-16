@@ -68,6 +68,7 @@ end
 % function for moving the robot forward
 function moveForward()
     global brick
+    global robotSpeed
     
     % move forward
     brick.MoveMotor('C', -robotSpeed);
@@ -77,6 +78,7 @@ end
 % function to move the robot backward
 function turnBackward()
     global brick
+    global robotSpeed
     
     % turn right until angle is 180
     brick.MoveMotorAngleRel('C', robotSpeed, 1040);
