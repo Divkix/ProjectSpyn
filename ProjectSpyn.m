@@ -1,6 +1,5 @@
 % calibrate the color sensor
 brick.SetColorMode(2, 2);
-color = brick.ColorCode(2);
 
 % define some variables
 % stopDistance = 13.5;  % stopDistance is the distance after which the robot should not move
@@ -11,6 +10,9 @@ robotSpeed = 50;  % the speed at which robot will move around the maze
 while true
     % get distance from ultrasonic sensor
     distance = brick.UltrasonicDist(3);
+
+    % get the color from the color sensor
+    color = brick.ColorCode(2);
     
     % start moving forward
     moveForward();
