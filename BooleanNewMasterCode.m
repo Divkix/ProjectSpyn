@@ -36,7 +36,7 @@ while true
     
     % if distance == stopDisatnce, then stop the robot and decide where to
     % turn
-    if distance <= 24.5
+    if distance <= 26
         %stop
         brick.StopAllMotors();
         %pause
@@ -45,29 +45,29 @@ while true
         brick.MoveMotor('C', 50);
         brick.MoveMotor('A', -50);
         %pause
-        pause(1.9);
+        pause(1.6);
         brick.StopAllMotors();
-        pause(1.5);
+        pause(2);
         distanceRight = brick.UltrasonicDist(3);
          %turn left to return to neutral position
         brick.MoveMotor('C', -50);
         brick.MoveMotor('A', 50);
         %pause
-        pause(1.9);
+        pause(1.5);
         brick.StopAllMotors();
          %turn left
         brick.MoveMotor('C', -50);
         brick.MoveMotor('A', 50);
         %pause
-        pause(1.9);
-        brick.StopAllMotors();
         pause(1.5);
+        brick.StopAllMotors();
+        pause(2);
         distanceLeft = brick.UltrasonicDist(3);
         %turn right to return to neutral position
         brick.MoveMotor('C', 50);
         brick.MoveMotor('A', -50);
         %pause
-        pause(1.9);
+        pause(1.5);
         brick.StopAllMotors();
         pause(1.5);
         
@@ -78,7 +78,7 @@ while true
             brick.MoveMotor('C', 50);
             brick.MoveMotor('A', -50);
             %pause
-            pause(1.9);
+            pause(1.6);
             brick.StopAllMotors();
             %collect distance again
             distance = brick.UltrasonicDist(3);
@@ -89,7 +89,7 @@ while true
              brick.MoveMotor('C', -50);
              brick.MoveMotor('A', 50);
              %pause
-             pause(1.9);
+             pause(1.5);
              brick.StopAllMotors();
              %collect distance again
             distance = brick.UltrasonicDist(3);
@@ -101,7 +101,7 @@ while true
              brick.MoveMotor('C', 50);
               brick.MoveMotor('A', -50);
              %pause
-             pause(3.8);
+             pause(3.6);
              brick.StopAllMotors();  
              %collect distance again
             distance = brick.UltrasonicDist(3);
@@ -113,7 +113,7 @@ while true
              brick.MoveMotor('C', 50);
              brick.MoveMotor('A', -50);
              %pause
-             pause(1.9);
+             pause(1.6);
              brick.StopAllMotors();
              %collect distance again
             distance = brick.UltrasonicDist(3);
