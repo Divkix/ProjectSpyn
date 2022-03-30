@@ -54,5 +54,6 @@ while true
             brick.MoveMotor('A', -50);
             pause(1.5);
             brick.StopAllMotors();
+        end
     end
 end
