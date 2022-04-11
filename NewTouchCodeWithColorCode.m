@@ -45,26 +45,21 @@ while true
                 disp("Moving forward");
                 brick.MoveMotor('C', -46);
                 brick.MoveMotor('A', -50);
+                
             elseif distanceRight < 14
                 % if distance is less than 14 cm
                 pause(.08);
                 disp("Turning left");
                   brick.MoveMotor('C', 30);
                   brick.MoveMotor('A', -30);
-                  % go forward
-                disp("Moving forward");
-                  brick.MoveMotor('C', -46);
-                  brick.MoveMotor('A', -50);
+                 
             elseif distanceRight > 21
                 pause(.08);
                 % if distance is more than 21 cm
                 disp("Turning right");
                   brick.MoveMotor('C', -30);
                   brick.MoveMotor('A', 30);
-                % go forward
-                disp("Moving forward");
-                  brick.MoveMotor('C', -46);
-                  brick.MoveMotor('A', -50);
+              
             end
         else
         % stop all motors before turning
