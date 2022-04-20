@@ -14,11 +14,26 @@ while true
         brick.MoveMotor('A', -50);
     elseif color == 2
         %pickup
-        brick.MoveMotorAngleRel('B', 20, 35, 'Coast');
+        global key 
+        InitKeyboard();
+
+        while 1 
+        brick.StopAllMotors();
+        pause (0.1);
+        switch key
+            case 'p'
+                disp('p key pressed');
+                brick.MoveMotorAngleRel('B', 20, 35, 'Coast'); 
     elseif color == 3
         %dropoff
-        brick.MoveMotorAngleRel('B', 20, -35, 'Coast');
-        brick.MoveMotor('C', -50)
+        while 1 
+        brick.StopAllMotors();
+        pause (0.1);
+        switch key
+            case 'd'
+                disp('d key pressed');
+                brick.MoveMotorAngleRel('B', 20, -35, 'Coast');
+                brick.MoveMotor('C', -50)
     elseif  color == 5
         brick.StopAllMotors('Coast');
         pause(1);
