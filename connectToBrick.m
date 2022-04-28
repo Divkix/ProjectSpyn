@@ -1,2 +1,3 @@
-% connect with EV3 Brick
-brick = ConnectBrick('JIT');
+brick = ConnectBrick('jit');
+ distance = brick.UltrasonicDist(3);
+disp(distance);

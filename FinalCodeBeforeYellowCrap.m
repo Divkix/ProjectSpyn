@@ -28,20 +28,20 @@ while 1
     switch key
         case 'w'
             disp('w key pressed');
-            brick.MoveMotor('C', -30);
-            brick.MoveMotor('A', -30);
+            brick.MoveMotor('C', -10);
+            brick.MoveMotor('A', -10);
         case 's'
             disp ('s key pressed');
-            brick.MoveMotor('C', 30);
-            brick.MoveMotor('A', 30);
+            brick.MoveMotor('C', 10;
+            brick.MoveMotor('A', 10);
         case 'a' 
             disp ('a key pressed');
-            brick.MoveMotor('C', 30);
-            brick.MoveMotor('A', -30);
+            brick.MoveMotor('C', 10);
+            brick.MoveMotor('A', -10);
         case 'd'
             disp('d key pressed');
-            brick.MoveMotor('C', -30);
-            brick.MoveMotor('A', 30);
+            brick.MoveMotor('C', -10);
+            brick.MoveMotor('A', 10);
         case '9'
             disp ('moving motor arm up');
             brick.MoveMotor('B',-5);
@@ -68,20 +68,20 @@ while 1
     switch key
         case 'w'
             disp('w key pressed');
-            brick.MoveMotor('C', -30);
-            brick.MoveMotor('A', -30);
+            brick.MoveMotor('C', -15);
+            brick.MoveMotor('A', -15);
         case 's'
             disp ('s key pressed');
-            brick.MoveMotor('C', 30);
-            brick.MoveMotor('A', 30);
+            brick.MoveMotor('C', 15);
+            brick.MoveMotor('A', 15);
         case 'a' 
             disp ('a key pressed');
-            brick.MoveMotor('C', 30);
-            brick.MoveMotor('A', -30);
+            brick.MoveMotor('C', 15);
+            brick.MoveMotor('A', -15);
         case 'd'
             disp('d key pressed');
-            brick.MoveMotor('C', -30);
-            brick.MoveMotor('A', 30);
+            brick.MoveMotor('C', -15);
+            brick.MoveMotor('A', 15);
         case '9'
             disp ('moving motor arm up');
             brick.MoveMotor('B',-5);
